@@ -5,8 +5,31 @@ function setup() {
 }
 
 function makePageForEpisodes(episodeList) {
-  const rootElem = document.getElementById("root");
-  rootElem.textContent = `Got ${episodeList.length} episode(s)`;
+  const container = document.getElementById("episodes-container");
+  //container.innerHTML = ""; //clear?
+
+  episodeList.forEach((episode) => {
+    const episodeCard = document.createElement("article");
+    episodeCard.className = "episode-card";
+
+    const season = episode.season.toString().padStart(2, '0');
+    const number = episode.number.toString().padStart(2, '0');
+    const episodeCode = `S${season}E${number}`;
+
+    const imageUrl = episode.image ? episode.image.medium : "https://via.placeholder.com/210x295?text=No+Image";
+    
+    episodeCard.innerHTML = `
+      <img class="episode-image" src="${imageUrl}" alt="${episode.name || 'Untitled episode'}">
+      <div class="episode-content">
+        <h2 class="episode-title">${episode.name || 'Untitled episode'}</h2>
+        <span class="episode-code">${episodeCode}</span>
+        <div class="episode-summary">${episode.summary || "No summary available"}</div>
+        <a href="${episode.url}" target="_blank" rel="noopener">View on TvMaze</a>
+      </div>
+    `;
+
+    container.appendChild(episodeCard);
+  });
 }
 
 window.onload = setup;
