@@ -4,14 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TV Show Project | Dawud | dave-vermeulen</title>
+    <meta name="description" content="A TV Show Project by Dawud" />
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
-    <div id="root">
-    </div>
+    <header class="site-header">
+      <h1>TV Show Project</h1>
+    </header>
 
+    <main id="root">
+      <div class="episodes-container" id="episodes-container">
+        <!-- Episodes inserted here -->
+      </div>
+    </main>
+    <footer class="site-footer">
+      <p>
+        Data originally from <a href="https://www.tvmaze.com/" target="_blank" rel="noopener">TVMaze.com</a>
+      </p>
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
 
