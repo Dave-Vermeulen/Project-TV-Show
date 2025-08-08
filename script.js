@@ -12,22 +12,48 @@ function makePageForEpisodes(episodeList) {
     const episodeCard = document.createElement("article");
     episodeCard.className = "episode-card";
 
-    const season = pad(episode.season)
-    const number = pad(episode.number)
-    const episodeCode = `S${season}E${number}`;
+    const imageUrl = episode.image
+      ? episode.image.medium
+      : "https://via.placeholder.com/210x295?text=No+Image";
 
-    const imageUrl = episode.image ? episode.image.medium : "https://via.placeholder.com/210x295?text=No+Image";
-    
-    episodeCard.innerHTML = `
-      <img class="episode-image" src="${imageUrl}" alt="${episode.name || 'Untitled episode'}">
-      <div class="episode-content">
-        <h2 class="episode-title">${episode.name || 'Untitled episode'}</h2>
-        <span class="episode-code">${episodeCode}</span>
-        <div class="episode-summary">${episode.summary || "No summary available"}</div>
-        <a href="${episode.url}" target="_blank" rel="noopener">View on TvMaze</a>
-      </div>
-    `;
+    // Create img tag
+    const episodeImg = document.createElement("img");
+    episodeImg.className = "episode-image";
+    episodeImg.src =
+      episode.image?.medium ||
+      "https://via.placeholder.com/210x295?text=No+Image";
+    episodeImg.alt = `${episode.name || "Episode"} thumbnail`;
 
+    // Create episode content div
+    const episodeContent = document.createElement("div");
+
+    // Create title
+    const episodeTitle = document.createElement("h2");
+    episodeTitle.className = "episode-title";
+    episodeTitle.textContent = episode.name || "Untitled episode";
+
+    // Create ep code
+    const episodeCode = document.createElement("span");
+    episodeCode.className = "episode-code";
+    episodeCode.textContent = `S${pad(episode.season)}E${pad(episode.number)}`;
+
+    episodeContent.append(episodeTitle, episodeCode);
+
+    // episodeCard.innerHTML = `
+
+    //   <div class="episode-content">
+    //     <h2 class="episode-title">${episode.name || "Untitled episode"}</h2>
+    //     <span class="episode-code">${episodeCode}</span>
+    //     <div class="episode-summary">${
+    //       episode.summary || "No summary available"
+    //     }</div>
+    //     <a href="${
+    //       episode.url
+    //     }" target="_blank" rel="noopener">View on TvMaze</a>
+    //   </div>
+    // `;
+
+    episodeCard.append(episodeImg, episodeContent);
     container.appendChild(episodeCard);
   });
 }
