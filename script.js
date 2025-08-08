@@ -26,6 +26,7 @@ function makePageForEpisodes(episodeList) {
 
     // Create episode content div
     const episodeContent = document.createElement("div");
+    episodeContent.className = "episode-content";
 
     // Create title
     const episodeTitle = document.createElement("h2");
@@ -37,7 +38,13 @@ function makePageForEpisodes(episodeList) {
     episodeCode.className = "episode-code";
     episodeCode.textContent = `S${pad(episode.season)}E${pad(episode.number)}`;
 
-    episodeContent.append(episodeTitle, episodeCode);
+    // Create episode summary
+    const episodeSummary = document.createElement("p");
+    episodeSummary.className = "episode-summary";
+    episodeSummary.textContent =
+      cleanText(episode.summary) || "No summary available";
+
+    episodeContent.append(episodeTitle, episodeCode, episodeSummary);
 
     // episodeCard.innerHTML = `
 
@@ -63,6 +70,11 @@ function makePageForEpisodes(episodeList) {
 // Number padding function
 function pad(num) {
   return num.toString().padStart(2, "0");
+}
+
+// Function to clean string of html tags
+function cleanText(htmlString) {
+  return htmlString?.replace(/<[^>]+>/g, "").trim();
 }
 
 window.onload = setup;
