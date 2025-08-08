@@ -12,8 +12,8 @@ function makePageForEpisodes(episodeList) {
     const episodeCard = document.createElement("article");
     episodeCard.className = "episode-card";
 
-    const season = episode.season.toString().padStart(2, '0');
-    const number = episode.number.toString().padStart(2, '0');
+    const season = pad(episode.season)
+    const number = pad(episode.number)
     const episodeCode = `S${season}E${number}`;
 
     const imageUrl = episode.image ? episode.image.medium : "https://via.placeholder.com/210x295?text=No+Image";
@@ -30,6 +30,13 @@ function makePageForEpisodes(episodeList) {
 
     container.appendChild(episodeCard);
   });
+}
+
+// Helper functions
+
+// Number padding function
+function pad(num) {
+  return num.toString().padStart(2, "0");
 }
 
 window.onload = setup;
