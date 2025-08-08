@@ -6,7 +6,6 @@ function setup() {
 
 function makePageForEpisodes(episodeList) {
   const container = document.getElementById("episodes-container");
-  //container.innerHTML = ""; //clear?
 
   episodeList.forEach((episode) => {
     const episodeCard = document.createElement("article");
@@ -24,7 +23,7 @@ function makePageForEpisodes(episodeList) {
       "https://via.placeholder.com/210x295?text=No+Image";
     episodeImg.alt = `${episode.name || "Episode"} thumbnail`;
 
-    // Create episode content div
+    // Create episode content container
     const episodeContent = document.createElement("div");
     episodeContent.className = "episode-content";
 
@@ -33,7 +32,7 @@ function makePageForEpisodes(episodeList) {
     episodeTitle.className = "episode-title";
     episodeTitle.textContent = episode.name || "Untitled episode";
 
-    // Create ep code
+    // Create episode code
     const episodeCode = document.createElement("span");
     episodeCode.className = "episode-code";
     episodeCode.textContent = `S${pad(episode.season)}E${pad(episode.number)}`;
@@ -44,24 +43,21 @@ function makePageForEpisodes(episodeList) {
     episodeSummary.textContent =
       cleanText(episode.summary) || "No summary available";
 
-    episodeContent.append(episodeTitle, episodeCode, episodeSummary);
+    // Create episode TV Maze url link
+    const tvMazeLink = document.createElement("a");
+    tvMazeLink.href = episode.url;
+    tvMazeLink.target = "_blank";
+    tvMazeLink.rel = "noopener";
+    tvMazeLink.textContent = "View on TVMaze";
 
-    // episodeCard.innerHTML = `
+    //Build episode content
+    episodeContent.append(episodeTitle, episodeCode, episodeSummary, tvMazeLink);
 
-    //   <div class="episode-content">
-    //     <h2 class="episode-title">${episode.name || "Untitled episode"}</h2>
-    //     <span class="episode-code">${episodeCode}</span>
-    //     <div class="episode-summary">${
-    //       episode.summary || "No summary available"
-    //     }</div>
-    //     <a href="${
-    //       episode.url
-    //     }" target="_blank" rel="noopener">View on TvMaze</a>
-    //   </div>
-    // `;
-
+    // Build episode card
     episodeCard.append(episodeImg, episodeContent);
-    container.appendChild(episodeCard);
+
+    // Build card container
+    container.append(episodeCard);
   });
 }
 
