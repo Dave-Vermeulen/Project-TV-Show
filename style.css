@@ -16,7 +16,7 @@ body {
 
 .site-header {
   background-color: var(--primary);
-  color: white;
+  /* color: white; */
   padding: 2rem;
   text-align: center;
 }
