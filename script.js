@@ -18,10 +18,6 @@ function makeEpisodeCard({ name, season, number, image, summary, url }) {
   const episodeCard = document.createElement("article");
   episodeCard.className = "episode-card";
 
-  const imageUrl = image
-    ? image.medium
-    : "https://via.placeholder.com/210x295?text=No+Image";
-
   // Create img tag
   const episodeImg = document.createElement("img");
   episodeImg.className = "episode-image";
