@@ -12,6 +12,14 @@
   <body>
     <header class="site-header">
       <h1>TV Show Project</h1>
+      <nav>
+        <div id="search-container">
+          <label for="Search">
+            <input type="search" id="episode-search" name="Search" />
+          </label>
+          <span>Results: x of x</span>
+        </div>
+      </nav>
     </header>
 
     <main id="root">
@@ -21,8 +29,12 @@
     </main>
     <footer class="site-footer">
       <p>
-        Data originally from <a href="https://www.tvmaze.com/" target="_blank" rel="noopener">TVMaze.com</a>
+        Data originally from
+        <a href="https://www.tvmaze.com/" target="_blank" rel="noopener"
+          >TVMaze.com</a
+        >
       </p>
+    </footer>
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
 

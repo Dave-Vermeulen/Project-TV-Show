@@ -1,7 +1,13 @@
 //You can edit ALL of the code here
+
+// Create state
+let searchTerm = "";
+let filteredFilms = [];
+const allEpisodes = getAllEpisodes();
+
 function setup() {
-  const allEpisodes = getAllEpisodes();
-  makePageForEpisodes(allEpisodes);
+  makePageForEpisodes(allEpisodes); // Show all episodes initially
+  episodeSearch(allEpisodes); // Set up search listener
 }
 
 function makePageForEpisodes(episodeList) {
@@ -22,8 +28,7 @@ function makeEpisodeCard({ name, season, number, image, summary, url }) {
   const episodeImg = document.createElement("img");
   episodeImg.className = "episode-image";
   episodeImg.src =
-    image?.medium ||
-    "https://via.placeholder.com/210x295?text=No+Image";
+    image?.medium || "https://via.placeholder.com/210x295?text=No+Image";
   episodeImg.alt = `${name || "Episode"} thumbnail`;
 
   // Create episode content container
@@ -43,8 +48,7 @@ function makeEpisodeCard({ name, season, number, image, summary, url }) {
   // Create episode summary
   const episodeSummary = document.createElement("p");
   episodeSummary.className = "episode-summary";
-  episodeSummary.textContent =
-    cleanText(summary) || "No summary available";
+  episodeSummary.textContent = cleanText(summary) || "No summary available";
 
   // Create episode TV Maze url link
   const tvMazeLink = document.createElement("a");
@@ -60,6 +64,32 @@ function makeEpisodeCard({ name, season, number, image, summary, url }) {
   episodeCard.append(episodeImg, episodeContent);
 
   return episodeCard;
+}
+
+function episodeSearch(films) {
+  const searchInput = document.getElementById("episode-search");
+  const resultsSpan = document.querySelector("#search-container span");
+  const container = document.getElementById("episodes-container");
+
+  searchInput.addEventListener("keyup", function () {
+    searchTerm = searchInput.value.toLowerCase();
+
+    // Filter episodes by name or summary
+    const filteredFilms = films.filter(
+      (episode) =>
+        episode.name.toLowerCase().includes(searchTerm) ||
+        cleanText(episode.summary).toLowerCase().includes(searchTerm)
+    );
+
+    // Clear previous episodes
+    container.innerHTML = "";
+
+    // Render filtered episodes
+    makePageForEpisodes(filteredFilms);
+
+    // Update results count
+    resultsSpan.textContent = `Results: ${filteredFilms.length} of ${films.length}`;
+  });
 }
 
 // Helper functions
