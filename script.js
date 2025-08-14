@@ -8,6 +8,8 @@ const allEpisodes = getAllEpisodes();
 function setup() {
   makePageForEpisodes(allEpisodes); // Show all episodes initially
   episodeSearch(allEpisodes); // Set up search listener
+
+  populateEpisodeSelector(allEpisodes);
 }
 
 function makePageForEpisodes(episodeList) {
@@ -89,6 +91,39 @@ function episodeSearch(films) {
 
     // Update results count
     resultsSpan.textContent = `Results: ${filteredFilms.length} of ${films.length}`;
+  });
+}
+
+function populateEpisodeSelector(episodes) {
+  const selector = document.getElementById("episode-selector");
+  const resetButton = document.getElementById("reset-button");
+  const container = document.getElementById("episodes-container");
+
+  episodes.forEach((episode) => {
+    const option = document.createElement("option");
+    option.value = episode.id;
+    option.textContent = `S${pad(episode.season)}E${pad(episode.number)} - ${
+      episode.name
+    }`;
+    selector.appendChild(option);
+  });
+
+  selector.addEventListener("change", function () {
+    const selectedId = parseInt(selector.value);
+    if (!selectedId) return;
+
+    const selectedEpisode = episodes.find((ep) => ep.id === selectedId);
+    container.innerHTML = "";
+    container.appendChild(makeEpisodeCard(selectedEpisode));
+
+    resetButton.style.display = "inline-block";
+  });
+
+  resetButton.addEventListener("click", function () {
+    container.innerHTML = "";
+    makePageForEpisodes(episodes);
+    selector.value = "";
+    resetButton.style.display = "none";
   });
 }
 
