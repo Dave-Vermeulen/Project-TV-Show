@@ -13,11 +13,8 @@
     <header class="site-header">
       <h1>TV Show Project</h1>
       <nav>
-        <div id="search-container">
-          <label for="Search">
-            <input type="search" id="episode-search" name="Search" />
-          </label>
-          <span>Results: x of x</span>
+        <div id=" />
+          <span id="results-count">Results: x of x</span>
         </div>
 
         <div id="episode-selector-container">
@@ -25,9 +22,7 @@
           <select id="episode-selector">
             <option value="">-- Select an episode --</option>
           </select>
-          <button id="reset-button" style="display: none">
-            Show All Episodes
-          </button>
+          <button id="reset-button" style="display: none;">Show All Episodes</button>
         </div>
       </nav>
     </header>
@@ -37,18 +32,15 @@
         <!-- Episodes inserted here -->
       </div>
     </main>
+
     <footer class="site-footer">
       <p>
         Data originally from
-        <a href="https://www.tvmaze.com/" target="_blank" rel="noopener"
-          >TVMaze.com</a
-        >
+        https://www.tvmaze.com/
       </p>
     </footer>
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
 
-    <!-- Loads YOUR javascript code -->
+    <script src="episodes.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
