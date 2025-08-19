@@ -1,60 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TV Show Project | Dawud | dave-vermeulen</title>
-    <meta name="description" content="A TV Show Project by Dawud" />
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="A TV Show Project by Dawud">
+    <link href="style.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
   </head>
 
   <body>
+    <!-- Header with navigation controls -->
     <header class="site-header">
       <h1>TV Show Project</h1>
       <nav>
+        <!-- Search input -->
         <div id="search-container">
-          <label for="Search">
-            <input
-              type="search"
-              id="episode-search"
-              name="Search"
-              placeholder="Search episodes..."
-            />
-          </label>
-          <span></span>
+          <input type="search" id="episode-search" placeholder="Search episodes...">
+          <span></span> <!-- Results count will go here -->
         </div>
 
+        <!-- Episode selector dropdown -->
         <div id="episode-selector-container">
           <label for="episode-selector">Jump to Episode:</label>
           <select id="episode-selector">
             <option value="">-- Select an episode --</option>
           </select>
-          <button id="reset-button" style="display: none">
-            Show All Episodes
-          </button>
+          <button id="reset-button" style="display: none">Show All Episodes</button>
         </div>
         
+        <!-- Status messages (loading/error) -->
+        <div id="status-message" class="status-message"></div>
       </nav>
     </header>
 
+    <!-- Main content area -->
     <main id="root">
-      <div class="episodes-container" id="episodes-container">
-        <!-- Episodes inserted here -->
-      </div>
+      <div class="episodes-container" id="episodes-container"></div>
     </main>
+    
+    <!-- Footer with attribution -->
     <footer class="site-footer">
-      <p>
-        Data originally from
-        <a href="https://www.tvmaze.com/" target="_blank" rel="noopener"
-          >TVMaze.com</a
-        >
-      </p>
+      <p>Data originally from <a href="https://www.tvmaze.com/" target="_blank" rel="noopener">TVMaze.com</a></p>
     </footer>
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
 
-    <!-- Loads YOUR javascript code -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
   </body>
 </html>
