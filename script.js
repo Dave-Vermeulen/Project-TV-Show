@@ -29,6 +29,10 @@ function fetchShows() {
 // Function to populate show selector
 function populateShowSelector() {
   const showSelector = document.getElementById("show-selector");
+  const resetShowButton = document.getElementById("show-reset-button");
+
+  // Clear existing options
+  while (showSelector.options.length > 1) showSelector.remove(1);
 
   allShows.forEach((show) => {
     const option = new Option(show.name, show.id);
@@ -37,9 +41,9 @@ function populateShowSelector() {
 
   showSelector.addEventListener("change", function () {
     const showId = this.value;
-    resetShowButton.style.display = "inline-block";
-
     if (!showId) return;
+
+    resetShowButton.style.display = "inline-block";
 
     if (episodeCache[showId]) {
       allEpisodes = episodeCache[showId];
@@ -47,6 +51,17 @@ function populateShowSelector() {
     } else {
       fetchEpisodesForShow(showId);
     }
+  });
+
+  // Select show reset
+  resetShowButton.addEventListener("click", () => {
+    showSelector.value = "";
+    document.getElementById("episodes-container").innerHTML = "";
+    document.getElementById("episode-selector").innerHTML =
+      '<option value="">-- Select an episode --</option>';
+    document.getElementById("episode-search").value = "";
+    document.querySelector("#search-container span").textContent = "";
+    resetShowButton.style.display = "none";
   });
 }
 
@@ -67,18 +82,6 @@ function fetchEpisodesForShow(showId) {
       showStatus("Failed to load episodes. Please try again later.", "error");
     });
 }
-
-// Reset show button functionality
-resetShowButton.addEventListener("click", () => {
-  document.getElementById("show-selector").value = "";
-  allEpisodes = [];
-  document.getElementById("episodes-container").innerHTML = "";
-  document.getElementById("episode-selector").innerHTML = '<option value="">-- Select an episode --</option>';
-  document.getElementById("episode-search").value = "";
-  document.querySelector("#search-container span").textContent = "";
-  resetShowButton.style.display = "none";
-});
-
 
 // Fetch episodes from API
 const url = "https://api.tvmaze.com/shows/82/episodes";
