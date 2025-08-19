@@ -1,48 +1,46 @@
-#root {
+/* Color variables for consistent theming */
+:root {
   --primary: #084b83;
   --secondary: #42bfdd;
   --light: #bbe6e4;
   --background: #f0f6f6;
   --accent: #ff66b3;
 }
+
+/* Global styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: var(--background);
   margin: 0;
-  padding: 0;
 }
 
+/* Header styles */
 .site-header {
   background-color: var(--primary);
-  /* color: white; */
+  color: white;
   padding: 2rem;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-.site-header h1 {
-  margin: 0;
-}
-
+/* Episodes grid layout */
 .episodes-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
+/* Episode card styles */
 .episode-card {
-  background-color: white;
+  background: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 300px;
   transition: transform 0.3s ease;
 }
 
@@ -62,13 +60,12 @@ body {
 
 .episode-title {
   color: var(--primary);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem;
 }
 
 .episode-code {
   display: inline-block;
-  background-color: var(--secondary);
+  background: var(--secondary);
   color: white;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
@@ -78,10 +75,12 @@ body {
 
 .episode-summary {
   color: #666;
+  margin-bottom: 1rem;
 }
 
+/* Footer styles */
 .site-footer {
-  background-color: var(--primary);
+  background: var(--primary);
   color: white;
   text-align: center;
   padding: 1rem;
@@ -90,10 +89,64 @@ body {
 
 .site-footer a {
   color: var(--light);
-  text-decoration: none;
 }
 
 .site-footer a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
+/* Search and filter controls */
+#search-container, #episode-selector-container {
+  margin-bottom: 1rem;
+}
+
+#episode-search, #episode-selector {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#episode-search {
+  width: 250px;
+}
+
+#reset-button {
+  padding: 0.5rem 1rem;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+#reset-button:hover {
+  background: var(--primary);
+}
+
+/* Status message styles */
+.status-message {
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.status-message.loading {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-message.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* No results message */
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  grid-column: 1 / -1;
+  padding: 2rem;
+}
