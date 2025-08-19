@@ -55,13 +55,22 @@ function populateShowSelector() {
 
   // Select show reset
   resetShowButton.addEventListener("click", () => {
-    showSelector.value = "";
+    // Reset show selector
+    document.getElementById("show-selector").value = "";
+
+    // Clear episodes and episode-related controls
+    allEpisodes = [];
     document.getElementById("episodes-container").innerHTML = "";
     document.getElementById("episode-selector").innerHTML =
       '<option value="">-- Select an episode --</option>';
     document.getElementById("episode-search").value = "";
     document.querySelector("#search-container span").textContent = "";
+
+    // Hide "Show All Shows" button
     resetShowButton.style.display = "none";
+
+    // Hide "Show All Episodes" button
+    document.getElementById("reset-button").style.display = "none";
   });
 }
 
