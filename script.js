@@ -37,6 +37,8 @@ function populateShowSelector() {
 
   showSelector.addEventListener("change", function () {
     const showId = this.value;
+    resetShowButton.style.display = "inline-block";
+
     if (!showId) return;
 
     if (episodeCache[showId]) {
@@ -53,18 +55,29 @@ function fetchEpisodesForShow(showId) {
   showStatus("Loading episodes...", "loading");
 
   fetch(`https://api.tvmaze.com/shows/${showId}/episodes`)
-    .then(res => res.json())
-    .then(episodes => {
+    .then((res) => res.json())
+    .then((episodes) => {
       episodeCache[showId] = episodes;
       allEpisodes = episodes;
       hideStatus();
       initializeApp();
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Error fetching episodes:", err);
       showStatus("Failed to load episodes. Please try again later.", "error");
     });
 }
+
+// Reset show button functionality
+resetShowButton.addEventListener("click", () => {
+  document.getElementById("show-selector").value = "";
+  allEpisodes = [];
+  document.getElementById("episodes-container").innerHTML = "";
+  document.getElementById("episode-selector").innerHTML = '<option value="">-- Select an episode --</option>';
+  document.getElementById("episode-search").value = "";
+  document.querySelector("#search-container span").textContent = "";
+  resetShowButton.style.display = "none";
+});
 
 
 // Fetch episodes from API
