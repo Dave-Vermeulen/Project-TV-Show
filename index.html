@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TV Show Project | Dawud | dave-vermeulen</title>
-    <meta name="description" content="A TV Show Project by Dawud">
-    <link href="style.css" rel="stylesheet">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="description" content="A TV Show Project by Dawud" />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
@@ -16,8 +16,21 @@
       <nav>
         <!-- Search input -->
         <div id="search-container">
-          <input type="search" id="episode-search" placeholder="Search episodes...">
-          <span></span> <!-- Results count will go here -->
+          <input
+            type="search"
+            id="episode-search"
+            placeholder="Search episodes..."
+          />
+          <span></span>
+          <!-- Results count will go here -->
+        </div>
+
+        <!-- Show selector dropdown -->
+        <div id="show-selector-container">
+          <label for="show-selector">Select a Show:</label>
+          <select id="show-selector">
+            <option value="">-- Select a show --</option>
+          </select>
         </div>
 
         <!-- Episode selector dropdown -->
@@ -26,9 +39,11 @@
           <select id="episode-selector">
             <option value="">-- Select an episode --</option>
           </select>
-          <button id="reset-button" style="display: none">Show All Episodes</button>
+          <button id="reset-button" style="display: none">
+            Show All Episodes
+          </button>
         </div>
-        
+
         <!-- Status messages (loading/error) -->
         <div id="status-message" class="status-message"></div>
       </nav>
@@ -38,7 +53,7 @@
     <main id="root">
       <div class="episodes-container" id="episodes-container"></div>
     </main>
-    
+
     <!-- Footer with attribution -->
     <footer class="site-footer">
       <p>Data originally from <a href="https://www.tvmaze.com/" target="_blank" rel="noopener">TVMaze.com</a></p>
