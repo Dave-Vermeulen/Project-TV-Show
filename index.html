@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | Dawud | dave-vermeulen</title>
-    <meta name="description" content="A TV Show Project by Dawud" />
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  </head>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TV Show Project | Dawud | dave-vermeulen</title>
+<meta name="description" content="A TV Show Project by Dawud" />
+<link href="style.css" rel="stylesheet" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<!-- Header with navigation controls -->
+<header class="site-header">
+<h1>TV Show Project</h1>
+<nav>
+<!-- Search input (contextual: shows OR episodes) -->
+<div id="search-container">
+<input type="search" id="episode-search" placeholder="Search shows..." />
+<span></span> <!-- Results count -->
+</div>
 
-  <body>
-    <!-- Header with navigation controls -->
-    <header class="site-header">
-      <h1>TV Show Project</h1>
-      <nav>
-        <!-- Search input -->
-        <div id="search-container">
-          <input
-            type="search"
-            id="episode-search"
-            placeholder="Search episodes..."
-          />
-          <span></span>
-          <!-- Results count will go here -->
-        </div>
 
-        <!-- Show selector dropdown -->
-        <div id="show-selector-container">
-          <label for="show-selector">Select a Show:</label>
-          <select id="show-selector">
-            <option value="">-- Select a show --</option>
-          </select>
-            <button id="show-reset-button" style="display: none;">Show All Shows</button>
-        </div>
+<!-- Show selector dropdown -->
+<div id="show-selector-container">
+<label for="show-selector">Select a Show:</label>
+<select id="show-selector">
+<option value="">-- Select a show --</option>
+</select>
+<button id="show-reset-button" style="display: none;">Show All Shows</button>
+</div>
 
-        <!-- Episode selector dropdown -->
-        <div id="episode-selector-container">
-          <label for="episode-selector">Jump to Episode:</label>
-          <select id="episode-selector">
-            <option value="">-- Select an episode --</option>
-          </select>
-          <button id="reset-button" style="display: none">
-            Show All Episodes
-          </button>
-        </div>
 
-        <!-- Status messages (loading/error) -->
-        <div id="status-message" class="status-message"></div>
-      </nav>
-    </header>
+<!-- Episode selector dropdown -->
+<div id="episode-selector-container" style="display:none;">
+<label for="episode-selector">Jump to Episode:</label>
+<select id="episode-selector">
+<option value="">-- Select an episode --</option>
+</select>
+<button id="reset-button" style="display: none">Show All Episodes</button>
+</div>
 
-    <!-- Main content area -->
-    <main id="root">
-      <div class="episodes-container" id="episodes-container"></div>
-    </main>
 
-    <!-- Footer with attribution -->
-    <footer class="site-footer">
-      <p>Data originally from <a href="https://www.tvmaze.com/" target="_blank" rel="noopener">TVMaze.com</a></p>
-    </footer>
+<!-- Status messages (loading/error) -->
+<div id="status-message" class="status-message"></div>
+</nav>
+</header>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-  </body>
+
+<!-- Main content area -->
+<main id="root">
+<!-- SHOWS GRID (initial view) -->
+<div class="shows-container" id="shows-container"></div>
+
+
+<!-- EPISODES GRID (hidden until a show is selected) -->
+<div class="episodes-container" id="episodes-container" style="display:none;"></div>
+</main>
+
+
+<!-- Footer with attribution -->
+<footer class="site-footer">
+<p>Data originally from <a href="https://www.tvmaze.com/" target="_blank" rel="noopener">TVMaze.com</a></p>
+</footer>
+
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+</body>
 </html>
