@@ -92,27 +92,6 @@ function fetchEpisodesForShow(showId) {
     });
 }
 
-// Fetch episodes from API
-const url = "https://api.tvmaze.com/shows/82/episodes";
-function fetchEpisodes() {
-  showStatus("Loading episodes...", "loading");
-
-  fetch(url)
-    .then((response) => {
-      if (!response.ok)
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      return response.json();
-    })
-    .then((episodes) => {
-      allEpisodes = episodes;
-      hideStatus();
-      initializeApp();
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-      showStatus("Failed to load episodes. Please try again later.", "error");
-    });
-}
 
 // Show status message with type (loading/error)
 function showStatus(message, type) {
