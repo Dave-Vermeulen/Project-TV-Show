@@ -2,6 +2,7 @@
 :root {
   --primary: #084b83;
   --secondary: #42bfdd;
+  --secondaryTint: #3599b1;
   --light: #bbe6e4;
   --background: #f0f6f6;
   --accent: #ff66b3;
@@ -9,7 +10,7 @@
 
 /* Global styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: var(--background);
@@ -96,11 +97,15 @@ body {
 }
 
 /* Search and filter controls */
-#search-container, #episode-selector-container {
+#search-container,
+#episode-selector-container,
+#show-selector-container {
   margin-bottom: 1rem;
 }
 
-#episode-search, #episode-selector {
+#episode-search,
+#episode-selector,
+#show-selector {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -110,7 +115,8 @@ body {
   width: 250px;
 }
 
-#reset-button {
+#reset-button,
+#show-reset-button {
   padding: 0.5rem 1rem;
   background: var(--secondary);
   color: white;
@@ -120,8 +126,9 @@ body {
   margin-left: 0.5rem;
 }
 
-#reset-button:hover {
-  background: var(--primary);
+#reset-button:hover,
+#show-reset-button:hover {
+  background: var(--secondaryTint);
 }
 
 /* Status message styles */
